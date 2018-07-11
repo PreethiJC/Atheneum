@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Hello, {{ user.username }}</h1>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-md-6"><p><b>User</b></p></div>
+                <div class="col-md-6"><p><b>Comment</b></p></div>
+        </div>
+        {% for post in posts %}
+            <hr>
+            <div class="row">
+                <div class="col-md-6"><p>{{ post.author.username }}</p></div>
+                <div class="col-md-6"><p>{{ post.body }}</p></div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

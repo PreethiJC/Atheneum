@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Page Heading
+                    <small>Secondary Text</small>
+                </h1>
+            </div>
+        </div>
+
+        <!-- /.row -->
+        {% for book_row in book_list | batch(3, '&nbsp;')%}
+        <!-- Projects Row -->
+            <div class="row">
+                {% for book in book_row %}
+                    <div class="col-md-4 portfolio-item">
+                        <center>
+                            <img class="img" src={{ book.image }} alt="" width="200px" height="300px">
+                        </center>
+                        <h3>
+                            <a href={{ url_for('book_details', id=book.id) }}>{{ book.topic }} by {{ book.author }}</a>
+                        </h3>
+                        <p>{{ book.snippet }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <hr>
+        {% endfor %}
+        <!-- /.row -->
+
+        <!-- Pagination -->
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+{% endblock %}

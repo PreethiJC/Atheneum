@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ info.topic }}
+                    <small>{{ info.author }}</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8">
+                <center>
+                     <img class="img-responsive" src= {{ info.image }}>
+                </center>
+            </div>
+
+            <div class="col-md-4">
+                <h3>Plot</h3>
+                <p> {{ info.description|safe }} </p>
+                <h3>Book Stats</h3>
+                <ul>
+                    <li><b>Average Rating: </b> {{ info.rating }}</li>
+                    <li><b>Genres: </b>
+                        <ul>
+                            {% for genre in info.genres %}
+                                <li>
+                                    {{ genre }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li><b>Download Link: </b> <a href={{ info.download_link }}>{{ info.download_link }}</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <!-- Related Projects Row -->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h3 class="page-header">Related Books: TBI</h3>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+            <div class="col-sm-3 col-xs-6">
+                <a href="#">
+                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+    </div>
+{% endblock %}
