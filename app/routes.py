@@ -3,6 +3,7 @@ from flask import render_template, session
 from pymongo import MongoClient
 from app.helpers import Helpers as Helpers
 
+
 helper = Helpers()
 
 
@@ -27,10 +28,12 @@ def book_list():
     client = MongoClient("localhost", 27017, maxPoolSize=50)
     db = client.mobilism
     collection = db['children']
-    book_list = collection.find({})
+    cursor = collection.find().skip(0).limit(6)
+    book_list = [x for x in cursor]
     book_details, session_details = helper.get_list_details(book_list[:6])
+    pagination = helper.get_pagination(cursor)
     session['details'] = session_details
-    return render_template('list.html', title='List', book_list=book_details)
+    return render_template('list.html', title='List', book_list=book_details, pagination=pagination)
 
 @app.route('/details/<id>')
 def book_details(id):
